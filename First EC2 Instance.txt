@@ -1,0 +1,53 @@
+  sudo -i
+yum update
+yum install httpd
+service httpd start
+cd /var/www/html
+vi index.html
+(inside vi type the below)
+<html><h1>Hi My name is Paul Dinesh
+ <br />Welcome to my Page </h1></html>
+
+chkconfig httpd on  
+
+service httpd stop
+chkconfig httpd on  --> service httpd start	
+
+dd if=/dev/zero of=/dev/null --> To increase the load of CPU usage
+
+
+To connect private instance through public instance
+
+login in public instance
+vi Keypair.pem  (copy and paste the keypair content)
+chmod 600 Keypair.pem
+ssh -i "Keypair.pem" ec2-user@192.168.1.27
+
+
+
+ sudo -i
+[root@ip-172-31-20-54 ~]# mkdir shareddrive
+[root@ip-172-31-20-54 ~]# cd shareddrive/
+[root@ip-172-31-20-54 shareddrive]# pwd
+/root/shareddrive
+[root@ip-172-31-20-54 shareddrive]# sudo mount -t nfs4 -o nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2,noresvport fs-4ee0cbe7.efs.us-west-2.amazonaws.com:/ /root/shareddrive/
+
+
+[ec2-user@ip-172-31-26-67 ~]$ sudo -i
+[root@ip-172-31-26-67 ~]# pwd
+/root
+[root@ip-172-31-26-67 ~]# mkdir myshareddrive
+[root@ip-172-31-26-67 ~]# cd myshareddrive/
+[root@ip-172-31-26-67 myshareddrive]# pwd
+/root/myshareddrive
+[root@ip-172-31-26-67 myshareddrive]# sudo mount -t nfs4 -o nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2,noresvport fs-4ee0cbe7.efs.us-west-2.amazonaws.com:/ /root/myshareddrive/
+[root@ip-172-31-26-67 myshareddrive]# ls
+[root@ip-172-31-26-67 myshareddrive]# vi index.html
+[root@ip-172-31-26-67 myshareddrive]# ls
+[root@ip-172-31-26-67 myshareddrive]# ls
+[root@ip-172-31-26-67 myshareddrive]# exit
+logout
+[ec2-user@ip-172-31-26-67 ~]$ sudo -i
+[root@ip-172-31-26-67 ~]# cd
+
+
